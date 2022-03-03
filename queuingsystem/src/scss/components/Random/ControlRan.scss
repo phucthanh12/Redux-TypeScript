@@ -1,60 +1,63 @@
-.random {
-    .controlDevice-warp-item_search {
-        width: 240px;
-    }
+.controlService {
     .dropdown {
-        width: 154px;
-
-        &-btn,
-        &-content {
-            font-size: 14px;
-            line-height: 21px;
-            color: $backTittle;
-        }
+      width: 146px;
+  
+      &-btn,
+      &-content {
+        font-size: 14px;
+        line-height: 21px;
+        color: $backTittle;
+      }
     }
-}
-//addrandom
-.main-Random {
+    .controlDevice-warp-item:first-child .dropdown {
+      width: 180px;
+    }
+    .controlDevice-warp-item_search {
+      width: 240px;
+    }
+  }
+  //addrandom
+  .main-Random {
     background: $white;
     box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
     border-radius: 16px;
     margin: 0 24px 42px 24px;
     padding-top: 24px;
-
+  
     position: relative;
     &_heading {
-        font-weight: bold;
-        font-size: 32px;
-        line-height: 48px;
-        color: $orangeColor;
-        text-transform: uppercase;
-        text-align: center;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 48px;
+      color: $orangeColor;
+      text-transform: uppercase;
+      text-align: center;
     }
-
+  
     &_content {
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 30px;
-        color: $-gray-400;
-        text-align: center;
-        margin: 20px 0 12px 0;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 30px;
+      color: $-gray-400;
+      text-align: center;
+      margin: 20px 0 12px 0;
     }
     > .dropdown {
-        width: 400px;
-        margin: auto;
+      width: 400px;
+      margin: auto;
     }
     > .controll-btn {
-        margin: 80px 0 0px 0;
-        padding-bottom: 298px;
-        button {
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 22px;
-        }
+      margin: 80px 0 0px 0;
+      padding-bottom: 298px;
+      button {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+      }
     }
-}
-//model random
-.Model {
+  }
+  //model random
+  .Model {
     position: fixed;
     top: 0;
     right: 0;
@@ -62,8 +65,8 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999998;
-}
-.ModeRandom {
+  }
+  .ModeRandom {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -74,53 +77,53 @@
     z-index: 9999999;
     transition: ease-out 1s;
     &-top {
-        padding-top: 48px;
-        background-color: $white;
-        border-top-left-radius: 24px;
-        border-top-right-radius: 24px;
-
-        &_title {
-            font-weight: bold;
-            font-size: 32px;
-            line-height: 48px;
-            color: $-gray-400;
-        }
-        &_number {
-            font-weight: 800;
-            font-size: 56px;
-            line-height: 60px;
-            color: $orangeColor;
-            margin: 24px 0px;
-        }
-        &_content {
-            font-size: 18px;
-            line-height: 27px;
-            color: $backTittle;
-            padding-bottom: 44px;
-        }
+      padding-top: 48px;
+      background-color: $white;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+  
+      &_title {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 48px;
+        color: $-gray-400;
+      }
+      &_number {
+        font-weight: 800;
+        font-size: 56px;
+        line-height: 60px;
+        color: $orangeColor;
+        margin: 24px 0px;
+      }
+      &_content {
+        font-size: 18px;
+        line-height: 27px;
+        color: $backTittle;
+        padding-bottom: 44px;
+      }
     }
     &-bot {
-        padding: 16px 0;
-        background-color: $orangeColor2;
-        border-bottom-left-radius: 24px;
-        border-bottom-right-radius: 24px;
-        &_title {
-            font-weight: bold;
-            font-size: 22px;
-            line-height: 33px;
-            color: $white;
-        }
-        &_title:first-child {
-            margin-bottom: 12px;
-        }
+      padding: 16px 0;
+      background-color: $orangeColor2;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      &_title {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 33px;
+        color: $white;
+      }
+      &_title:first-child {
+        margin-bottom: 12px;
+      }
     }
     &-exit {
-        position: absolute;
-        top: 22px;
-        right: 22px;
-        color: $orangeColor;
-        font-weight: bold;
-        font-size: 24px;
-        cursor: pointer;
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      color: $orangeColor;
+      font-weight: bold;
+      font-size: 24px;
+      cursor: pointer;
     }
-}
+  }

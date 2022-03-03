@@ -19,40 +19,23 @@ import AccountManager from '../Pages/manage/Account/AccountManager';
 import AddAccount from '../Pages/manage/Account/AddAccount';
 import TemplateFormAdd from '../Pages/TemplateFormAdd';
 import TemplateFormDetail from '../Pages/equipment/TemplateFormDetail';
-import { EquipSelector } from '../Redux/selector';
+import { EquipSelector, RandomSelector } from '../Redux/selector';
 import { useSelector } from 'react-redux';
+import ServiceManager from '../Pages/service/ServiceManager';
+import TemplateFormService from '../Pages/service/TemplateFormService';
+import TemplateFormDetailService from '../Pages/service/TemplateFormDetailService';
+import RandomManager from '../Pages/random/RandomManager';
+import AddRandom from '../Pages/random/AddRandom';
+import ReportManager from '../Pages/report/ReportManager';
+import UserManager from '../Pages/manage/User/UserManager';
+import RoleManager from '../Pages/manage/Role/RoleManager';
 
-// import PageLogin from '../Pages/user/PageLogin';
-// import PageForgot from "../Pages/user/PageForgot";
+import FormRole from '../Pages/manage/Role/FormRole';
 
-// import Info from "../Pages/Home/Info";
-// import ChartDashBoard from "../Pages/Home/ChartDashBoard";
-
-// import DeviceManager from "../Pages/Device/DeviceManager";
-// import AddDevice from "../Pages/Device/AddDevice";
-// import DetailDevice from "../Pages/Device/DetailDevice";
-// import UpdateDevice from "../Pages/Device/UpdateDevice";
-
-// import ServiceManager from "../Pages/Service/ServiceManager";
-// import AddService from "../Pages/Service/AddService";
-// import DetailService from "../Pages/Service/DetailService";
-// import ProtectedRouters from "../ProtectedRouters";
-
-// import RandomManager from "../Pages/Random/RandomManager";
-// import AddRandom from "../Pages/Random/AddRandom";
-// import RandomDetail from "../Pages/Device/RandomDetail";
-
-// import ReportManager from "../Pages/Report/ReportManager";
-
-// import Role from "../Pages/manage/Role/Role";
-// import FormRole from "../Pages/manage/Role/FormRole";
-
-// import AccountManager from "../Pages/manage/Account/AccountManager";
-// import AddAccount from "../Pages/manage/Account/AddAccount";
-
-// import UserManager from "../Pages/manage/User/UserManager";
 const Router = () => {
   const equipment = useSelector(EquipSelector);
+  const Random = useSelector(RandomSelector);
+
   let routes = useRoutes([
     {
       path: '/',
@@ -121,10 +104,40 @@ const Router = () => {
                 </Template>
               ),
             },
-            // {
-            //   path: 'detailRandom',
-            //   children: [{ path: ':id', element: <RandomDetail /> }],
-            // },
+            {
+              path: 'detailRandom',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Chi tiết"
+                        task={['Thiết bị', 'Danh sách cấp số', '']}
+                        contentMain="Quản lý Cấp số"
+                      />
+                      <TemplateFormDetail
+                        classNameIcon={'bx bx-chevron-left-circle'}
+                        tittlePath="Quay lại"
+                        path={`/randomNumber`}
+                        data={[
+                          { display: 'Họ tên', key: 'nameCustomer' },
+                          { display: 'Nguồn cấp', key: 'origin' },
+                          { display: 'Tên dịch vụ', key: 'nameService' },
+                          { display: 'Trạng thái', key: 'status' },
+                          { display: 'Số thứ tự', key: 'id' },
+                          { display: 'Số điện thoại', key: 'phone' },
+                          { display: 'Thời gian cấp', key: 'fromDate' },
+                          { display: 'Địa chỉ Email', key: 'email' },
+                          { display: 'Hạn sử dụng', key: 'toDate' },
+                        ]}
+                        dataOrigin={Random.dataRandom}
+                      />
+                    </Template>
+                  ),
+                },
+              ],
+            },
             {
               path: 'update',
               children: [
@@ -194,29 +207,56 @@ const Router = () => {
         {
           path: '/manage',
           children: [
-            // {
-            //   path: 'role',
+            {
+              path: 'role',
 
-            //   children: [
-            //     { path: 'add', element: <FormRole /> },
-            //     {
-            //       path: 'update',
-            //       children: [
-            //         {
-            //           path: ':id',
-            //           element: (
-            //             <FormRole
-            //               // pathCancel="/service"
-            //               // pathSubmit="/service"
-            //               update
-            //             />
-            //           ),
-            //         },
-            //       ],
-            //     },
-            //     { path: '', element: <Role /> },
-            //   ],
-            // },
+              children: [
+                {
+                  path: 'add',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Thêm vai trò"
+                        task={['Cài đặt hệ thống', ' Quản lý vai trò', '']}
+                        contentMain="Danh sách vai trò"
+                      />
+                      <FormRole />
+                    </Template>
+                  ),
+                },
+                {
+                  path: 'update',
+                  children: [
+                    {
+                      path: ':id',
+                      element: (
+                        <Template>
+                          <HeaderInfo
+                            title="Cập nhật vai trò"
+                            task={['Cài đặt hệ thống', 'Quản lý vai trò', '']}
+                            contentMain="Danh sách vai trò"
+                          />
+                          <FormRole update />
+                        </Template>
+                      ),
+                    },
+                  ],
+                },
+                {
+                  path: '',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Quản lý vai trò"
+                        task={['Cài đặt hệ thống', '']}
+                        contentMain="Danh sách vai trò"
+                      />
+                      <RoleManager />
+                    </Template>
+                  ),
+                },
+              ],
+            },
             {
               path: 'account',
               children: [
@@ -249,30 +289,158 @@ const Router = () => {
               ],
             },
             // { path: '', element: <Role /> },
-            // {
-            //   path: 'user',
+            {
+              path: 'user',
 
-            //   children: [
-            //     { path: 'add', element: <FormRole /> },
-            //     {
-            //       path: 'update',
-            //       children: [
-            //         {
-            //           path: ':id',
-            //           element: (
-            //             <FormRole
-            //               // pathCancel="/service"
-            //               // pathSubmit="/service"
-            //               update
-            //             />
-            //           ),
-            //         },
-            //       ],
-            //     },
-            //     { path: '', element: <UserManager /> },
-            //   ],
-            // },
+              children: [
+                // { path: 'add', element: <FormRole /> },
+                // {
+                //   path: 'update',
+                //   children: [
+                //     {
+                //       path: ':id',
+                //       element: (
+                //         <FormRole
+                //           // pathCancel="/service"
+                //           // pathSubmit="/service"
+                //           update
+                //         />
+                //       ),
+                //     },
+                //   ],
+                // },
+                {
+                  path: '',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Quản lý tài khoản"
+                        task={['Cài đặt hệ thống ', '']}
+                        contentMain="Danh sách tài khoản"
+                      />
+                      <UserManager />
+                    </Template>
+                  ),
+                },
+              ],
+            },
           ],
+        },
+        // //service
+        {
+          path: '/service',
+          children: [
+            {
+              path: 'add',
+              element: (
+                <Template>
+                  <HeaderInfo
+                    title="Thêm dịch vụ"
+                    task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                    contentMain="Quản lý dịch vụ"
+                  />
+                  <TemplateFormService
+                    pathCancel="/service"
+                    pathSubmit="/service"
+                  />
+                </Template>
+              ),
+            },
+            {
+              path: 'update',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Cập nhật"
+                        task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                        contentMain="Quản lý dịch vụ"
+                      />
+                      <TemplateFormService
+                        pathCancel="/service"
+                        pathSubmit="/service"
+                        update
+                      />
+                    </Template>
+                  ),
+                },
+              ],
+            },
+            {
+              path: 'detail',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Template>
+                      <HeaderInfo
+                        title="Chi tiết"
+                        task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                        contentMain="Quản lý dịch vụ"
+                      />
+                      <TemplateFormDetailService />
+                    </Template>
+                  ),
+                },
+              ],
+            },
+            {
+              path: '',
+              element: (
+                <Template>
+                  <HeaderInfo
+                    title="Danh sách dịch vụ"
+                    task={['Dịch vụ', '']}
+                    contentMain="Quản lý dịch vụ"
+                  />
+                  <ServiceManager />
+                </Template>
+              ),
+            },
+          ],
+        }, // //randomNumber
+        {
+          path: '/randomNumber',
+          children: [
+            {
+              path: 'add',
+              element: (
+                <Template>
+                  <HeaderInfo
+                    title="Cấp số mới"
+                    task={['Cấp số', 'Danh sách cấp số', '']}
+                    contentMain="Quản lý cấp số"
+                  />
+                  <AddRandom />
+                </Template>
+              ),
+            },
+            {
+              path: '',
+              element: (
+                <Template>
+                  <HeaderInfo
+                    title="Danh sách cấp số"
+                    task={['Cấp số', '']}
+                    contentMain="Quản lý cấp số"
+                  />
+                  <RandomManager />
+                </Template>
+              ),
+            },
+          ],
+        },
+        // ///announce
+        {
+          path: '/announce',
+          element: (
+            <Template>
+              <HeaderInfo title="Lập báo cáo" task={['Báo cáo', '']} />
+              <ReportManager />
+            </Template>
+          ),
         },
         {
           path: '*',
@@ -280,51 +448,6 @@ const Router = () => {
         },
       ],
     },
-
-    // //service
-    // {
-    //   path: '/service',
-    //   children: [
-    //     {
-    //       path: 'add',
-    //       element: <AddService pathCancel="/service" pathSubmit="/service" />,
-    //     },
-    //     {
-    //       path: 'update',
-    //       children: [
-    //         {
-    //           path: ':id',
-    //           element: (
-    //             <AddService
-    //               pathCancel="/service"
-    //               pathSubmit="/service"
-    //               update
-    //             />
-    //           ),
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       path: 'detail',
-    //       children: [{ path: ':id', element: <DetailService /> }],
-    //     },
-    //     { path: '', element: <ServiceManager /> },
-    //   ],
-    // },
-    // //randomNumber
-    // {
-    //   path: '/randomNumber',
-    //   children: [
-    //     { path: 'add', element: <AddRandom /> },
-    //     { path: '', element: <RandomManager /> },
-    //   ],
-    // },
-    // ///announce
-    // {
-    //   path: '/announce',
-    //   element: <ReportManager />,
-    // },
-    // //manager
   ]);
   return routes;
 };

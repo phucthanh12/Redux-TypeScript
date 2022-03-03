@@ -4,9 +4,7 @@ import {
   collection,
   getDocs,
   getDoc,
-  addDoc,
   updateDoc,
-  deleteDoc,
   setDoc,
   doc,
 } from 'firebase/firestore';
@@ -23,22 +21,14 @@ export interface IEquip {
   typeDevice: string;
 }
 class EquipDataService {
-  updateEquip(id: string, fillState: IEquip) {
-    throw new Error('Method not implemented.');
-  }
   addEquipment = (id: string, newEquip: IEquip) => {
     return setDoc(doc(db, 'Equipment', id), newEquip);
   };
 
-  // updateEquip = (id: string, updatedEquip: IEquip) => {
-  //   const EquipDoc = doc(db, 'Equipment', id);
-  //   return updateDoc(EquipDoc, updatedEquip);
-  // };
-
-  //   deleteEquip = (id) => {
-  //     const EquipDoc = doc(db, 'Equipment', id);
-  //     return deleteDoc(EquipDoc);
-  //   };
+  updateEquip = (id: string, updatedEquip: any) => {
+    const EquipDoc = doc(db, 'Equipment', id);
+    return updateDoc(EquipDoc, updatedEquip);
+  };
 
   getAllEquipment = () => {
     return getDocs(EquipCollectionRef);

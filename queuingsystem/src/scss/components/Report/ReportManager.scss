@@ -1,8 +1,13 @@
 .ReportManager {
     width: calc(#{$full-width} - #{$dashboard-width});
     background-color: $grayFF;
-
-    .deviceManager-add {
-        justify-content: space-evenly;
+    &-controller {
+      width: 100%;
+  
+      margin-top: 16px;
+      position: relative;
     }
-}
+    .deviceManager-add {
+      justify-content: space-evenly;
+    }
+  }
