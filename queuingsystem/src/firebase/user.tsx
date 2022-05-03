@@ -20,10 +20,10 @@ class UserDataService {
     return updateDoc(UserDoc, updatedUser);
   };
 
-  //   deleteUser = (id) => {
-  //     const UserDoc = doc(db, 'Users', id);
-  //     return deleteDoc(UserDoc);
-  //   };
+    // deleteUser = (id) => {
+    //   const UserDoc = doc(db, 'Users', id);
+    //   return deleteDoc(UserDoc);
+    // };
 
   getAllUsers = () => {
     return getDocs(UserCollectionRef);

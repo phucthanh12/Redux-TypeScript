@@ -56,7 +56,7 @@ const DashboardRight = () => {
     cutoutPercentage: 85,
   };
   return (
-    <div className="dashboard-right">
+    <div className="dashboard-right" style={{ backgroundColor: "#fff" }}>
       <div className="dashboard-right-tittle">Tổng quan</div>
 
       {dataCircle.map((item, index) => (
