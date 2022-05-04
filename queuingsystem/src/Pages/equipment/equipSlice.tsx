@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+//an object of reducer functions, a slice name, 
+//and an initial state value, and automatically generates
+//a slice reducer with corresponding action creators and action types.
 export default createSlice({
   name: 'Equip',
   initialState: {

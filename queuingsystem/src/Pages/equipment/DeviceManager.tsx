@@ -13,22 +13,6 @@ const DeviceManager = () => {
   const Equip = useSelector(EquipSelector);
   const dispatch = useDispatch();
   const [equip, setEquip] = useState<IEquip[]>([]);
-  // useEffect(() => {
-  //   for (let i = 1; i <= 100; i++) {
-  //     EquipDataService.addEquipment(`KIO_${i}`, {
-  //       id: `KIO_${i}`,
-  //       name: 'Kiosk',
-  //       ipAddress: `192.168.1.${i}`,
-  //       active: i % 2 === 0 ? true : false,
-  //       connect: i % 3 === 0 ? true : false,
-  //       service:
-  //         'khám tim mạch,khám mắt,khám răng hàm mặt,khám tai mũi họng,khám hô hấp,khám tổng quát',
-  //       Account: 'nghia',
-  //       passWord: '123456',
-  //       typeDevice: i % 7 === 0 ? 'Display counter' : 'Kiosk',
-  //     });
-  //   }
-  // }, []);
   const getEquips = async () => {
     const data = await EquipDataService.getAllEquipment();
     const dataArray: IEquip[] = data.docs.map((doc): IEquip => {
